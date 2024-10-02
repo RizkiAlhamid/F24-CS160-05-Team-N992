@@ -63,7 +63,13 @@ poetry remove <package-name>
 To run the FastAPI application, use the following command:
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8080
+```
+
+or run the run_dev.sh script
+
+```bass
+./run_dev.sh
 ```
 
 The application will be accessible at `http://localhost:8080`.
