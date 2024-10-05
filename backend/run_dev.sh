@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Load environment variables from .env file
-if [[ -f .env ]]; then
-  export $(grep -v '^#' .env | xargs)
-fi
-
 # Check if we are already inside a poetry shell
 if [[ "$VIRTUAL_ENV" != "" ]]; then
   echo "Already in poetry shell. Running the app..."

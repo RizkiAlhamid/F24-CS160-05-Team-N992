@@ -3,8 +3,10 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from fastapi import HTTPException, APIRouter
 from app.main import app
 from app.models.user import User 
+from dotenv import load_dotenv
 
 router = APIRouter()
+load_dotenv(dotenv_path="../.env")
 
 # MongoDB connection
 MONGO_URI = os.getenv("MONGO_URI")
@@ -26,5 +28,6 @@ async def create_user(user: User):
 async def get_users():
     users = []
     async for user in users_collection.find():
-        users.append(user)
+        user["_id"] = str(user["_id"])
+        users.append(User(**user))
     return {"users": users}
