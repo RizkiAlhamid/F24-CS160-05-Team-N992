@@ -3,17 +3,18 @@ from bson import ObjectId
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.models.article import Article
 from dotenv import load_dotenv
+from app.main import app
 import os
 
-load_dotenv()
-MONGO_DETAILS = os.getenv("MONGO_URI")
-client = AsyncIOMotorClient(MONGO_DETAILS)
+router = APIRouter()
+load_dotenv(dotenv_path="../.env")
+
+MONGO_URI = os.getenv("MONGO_URI")
+client = AsyncIOMotorClient(MONGO_URI)
 database = client.my_database
 articles_collection = database.get_collection("articles")
 
-router = APIRouter()
-
-@router.post("/articles/")
+@app.post("/articles/")
 async def create_article(article: Article):
     article_dict = article.model_dump()
     article_dict['url'] = str(article_dict['url'])
@@ -24,7 +25,7 @@ async def create_article(article: Article):
     result = await articles_collection.insert_one(article_dict)
     return {"id": str(result.inserted_id), "message": "Article created successfully"}
 
-@router.get("/articles/")
+@app.get("/articles/")
 async def get_all_articles():
     articles = []
     async for article in articles_collection.find():
@@ -32,7 +33,7 @@ async def get_all_articles():
         articles.append(article)
     return articles
 
-@router.get("/articles/{article_id}")
+@app.get("/articles/{article_id}")
 async def get_article_by_id(article_id: str):
     try:
         article = await articles_collection.find_one({"_id": ObjectId(article_id)})

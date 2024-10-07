@@ -12,8 +12,8 @@ load_dotenv(dotenv_path="../.env")
 MONGO_URI = os.getenv("MONGO_URI")
 client = AsyncIOMotorClient(MONGO_URI)
 
-db = client.mydatabase
-users_collection = db.users
+database = client.mydatabase
+users_collection = database.get_collection("users")
 
 @app.post("/users")
 async def create_user(user: User):
