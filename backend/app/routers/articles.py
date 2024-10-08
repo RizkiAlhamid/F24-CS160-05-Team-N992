@@ -1,17 +1,11 @@
 from fastapi import APIRouter, HTTPException
 from bson import ObjectId
-from motor.motor_asyncio import AsyncIOMotorClient
 from app.models.article import Article
-from dotenv import load_dotenv
 from app.main import app
-import os
+from app.database.db import database
 
 router = APIRouter()
-load_dotenv(dotenv_path="../.env")
 
-MONGO_URI = os.getenv("MONGO_URI")
-client = AsyncIOMotorClient(MONGO_URI)
-database = client.my_database
 articles_collection = database.get_collection("articles")
 
 @app.post("/articles/")

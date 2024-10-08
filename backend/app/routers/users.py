@@ -1,23 +1,13 @@
-import os
-from motor.motor_asyncio import AsyncIOMotorClient
 from fastapi import HTTPException, APIRouter
 from app.main import app
 from app.models.user import User 
-from dotenv import load_dotenv
+from app.database.db import database
 
 router = APIRouter()
-load_dotenv(dotenv_path="../.env")
-
-# MongoDB connection
-MONGO_URI = os.getenv("MONGO_URI")
-client = AsyncIOMotorClient(MONGO_URI)
-
-database = client.mydatabase
 users_collection = database.get_collection("users")
 
 @app.post("/users")
 async def create_user(user: User):
-    print("mongo uri: ", MONGO_URI)
     new_user = await users_collection.insert_one(user.model_dump())
     if new_user.inserted_id:
         return {"message": "User created", "user_id": str(new_user.inserted_id)}
