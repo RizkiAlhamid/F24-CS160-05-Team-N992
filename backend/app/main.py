@@ -1,7 +1,18 @@
 from fastapi import FastAPI
 import uvicorn
+from contextlib import asynccontextmanager
+from app.database.db import check_connection
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Perform startup tasks here
+    await check_connection()
+    
+    yield  # The application runs during this period
+    
+    # Perform shutdown tasks here (if any)
+
+app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
 def read_root():

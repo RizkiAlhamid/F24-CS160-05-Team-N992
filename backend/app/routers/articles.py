@@ -8,7 +8,7 @@ router = APIRouter()
 
 articles_collection = database.get_collection("articles")
 
-@app.post("/articles/")
+@app.post("/articles")
 async def create_article(article: Article):
     article_dict = article.model_dump()
     article_dict['url'] = str(article_dict['url'])
@@ -19,7 +19,7 @@ async def create_article(article: Article):
     result = await articles_collection.insert_one(article_dict)
     return {"id": str(result.inserted_id), "message": "Article created successfully"}
 
-@app.get("/articles/")
+@app.get("/articles")
 async def get_all_articles():
     articles = []
     async for article in articles_collection.find():
