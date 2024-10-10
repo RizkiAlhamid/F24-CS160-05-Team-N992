@@ -17,14 +17,42 @@ This project consists of two Python scripts that work together to scrape BBC New
 
 ## Requirements
 
-- Python 3.6+
-- Required Python packages:
-  - requests
-  - beautifulsoup4
-  - ratelimit
+- Python 3.12 or higher
+- Poetry installed on your system
 
-You can install the required packages using:
-`pip install requests beautifulsoup4 ratelimit`
+You can install Poetry by following the instructions at [Poetry's official installation guide](https://python-poetry.org/docs/#installation).
+
+Install dependencies using Poetry:
+```bash
+poetry install
+```
+
+To activate the virtual environment created by Poetry, run the following command:
+
+```bash
+poetry shell
+```
+
+To add a new dependency to the project, use the following command:
+
+```bash
+poetry add <package-name>
+```
+
+To remove a dependency from the project, use the following command:
+
+```bash
+poetry remove <package-name>
+```
+
+## Running the Application
+
+To run the FastAPI application, use the run_dev.sh script:
+
+```bass
+./run_dev.sh
+```
+The application will be accessible at `http://localhost:8080`.
 
 ## Usage
 
