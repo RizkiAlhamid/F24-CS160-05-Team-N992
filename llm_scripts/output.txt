@@ -1,0 +1,51 @@
+Input: Write a summary of the Humpty Dumpty original story.
+Output: Here is a summary of the original Humpty Dumpty story:
+
+```
+{
+  "logline": "A classic nursery rhyme about an anthropomorphic egg named Humpty Dumpty who falls off a wall and cannot be put back together again.",
+  "summary": "Humpty Dumpty is a traditional English nursery rhyme about an anthropomorphic egg who falls off a high wall in a city. The egg is placed on the wall by humans, but it falls off and breaks into pieces. Despite efforts to put Humpty together again, the egg cannot be repaired and is left in pieces. The rhyme is often interpreted as a commentary on the fragility of life and the inevitability of fate.",
+  "tags": ["nursery rhyme", "children's literature", "anthropomorphic egg", "classic tale"],
+  "main_topic": "Humpty Dumpty",
+  "key_points": [
+    {
+      "point": "Humpty Dumpty is an anthropomorphic egg",
+      "description": "The egg is given human-like qualities, such as being placed on a wall by humans."
+    },
+    {
+      "point": "Humpty Dumpty falls off a high wall",
+      "description": "The egg is placed on a high wall in a city, but it falls off and breaks into pieces."
+    },
+    {
+      "point": "Efforts to put Humpty together again fail",
+      "description": "Despite attempts to repair the egg, it cannot be put back together again."
+    }
+  ],
+  "sentiment": "neutral"
+}
+```
+
+Note: The sentiment of the original story is neutral, as it is a classic tale that is often interpreted in different ways. However, the story can be seen as having a melancholic tone, as it describes the fall and irreparable damage of the egg.
+
+Input: Write a summary of the Sun Wukong Story.
+Output: Here is a JSON object summarizing the Sun Wukong story:
+
+```
+{
+  "logline": "A powerful monkey king must use his wit and strength to defeat the forces of evil and bring peace to the land.",
+  "summary": "The Sun Wukong story, also known as Journey to the West, is a classic Chinese novel written by Wu Cheng'en. The story follows the adventures of Sun Wukong, a powerful and mischievous monkey king who is born from a stone and becomes a disciple of the Buddhist monk Tang Sanzang. Along with a group of other disciples, including Zhu Bajie and Sha Wujing, they embark on a perilous journey from China to India to retrieve sacred scriptures. Along the way, they encounter various obstacles, including fierce demons, treacherous landscapes, and internal conflicts. Through his bravery, intelligence, and loyalty, Sun Wukong proves himself to be a valuable ally and ultimately helps to bring peace to the land.",
+  "tags": ["Chinese literature", "Buddhism", "Monkey King", "Journey to the West", "Wu Cheng'en"],
+  "main_topic": "Sun Wukong",
+  "key_points": [
+    "Sun Wukong is born from a stone and becomes a powerful monkey king",
+    "He becomes a disciple of Tang Sanzang and embarks on a journey to India",
+    "He encounters various obstacles, including demons and treacherous landscapes",
+    "He uses his wit and strength to overcome challenges and bring peace to the land",
+    "He is a loyal and valuable ally to his fellow disciples"
+  ],
+  "sentiment": "positive"
+}
+```
+
+I hope this summary meets your requirements Let me know if you have any further requests.
+
