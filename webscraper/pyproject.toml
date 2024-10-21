@@ -15,6 +15,8 @@ ratelimit = "^2.2.1"
 google-api-python-client = "^2.149.0"
 python-dotenv = "^1.0.1"
 youtube-transcript-api = "^0.6.2"
+anthropic = "^0.36.2"
+openai = "^1.52.0"
 
 
 [build-system]
