@@ -20,6 +20,12 @@ def read_root():
 
 from app.routers.users import *
 from app.routers.articles import *
+from app.routers.articles import router as articles_router
+from app.routers.personas import router as personas_router
+
+app.include_router(articles_router)
+app.include_router(personas_router)
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8080)
