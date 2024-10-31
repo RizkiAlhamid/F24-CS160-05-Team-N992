@@ -2,14 +2,7 @@ import os
 import json
 import anthropic
 import openai
-from dotenv import load_dotenv
-
-
-load_dotenv()
-
-
-# Load API keys from environment variables
-
+from app.lib.credentials import OPENAI_API_KEY, ANTHROPIC_API_KEY
 
 # Initialize API clients
 anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)

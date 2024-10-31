@@ -1,13 +1,14 @@
 import requests
 import os
 import time
+from app.lib.credentials import PERPLEXITY_API_KEY
 
 # Perplexity API endpoint
 API_URL = "https://api.perplexity.ai/chat/completions"
 
 def process_with_perplexity(prompt, max_retries=3, delay=5):
     headers = {
-        "Authorization": f"Bearer {API_KEY}",
+        "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
         "Content-Type": "application/json"
     }
     
