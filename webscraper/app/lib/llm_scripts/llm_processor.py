@@ -3,6 +3,7 @@ import requests
 import time
 import re
 from typing import Dict, Any
+from app.lib.credentials import PERPLEXITY_API_KEY
 
 # Perplexity API endpoint
 API_URL = "https://api.perplexity.ai/chat/completions"
@@ -27,9 +28,10 @@ def create_persona_prompt(persona: Dict[str, Any]) -> str:
     
     return prompt
 
+
 def process_with_perplexity(transcript: str, persona: Dict[str, Any], max_retries=3, delay=5) -> Dict[str, Any]:
     headers = {
-        "Authorization": f"Bearer {API_KEY}",
+        "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
         "Content-Type": "application/json"
     }
     
@@ -100,6 +102,8 @@ def process_with_perplexity(transcript: str, persona: Dict[str, Any], max_retrie
                     "key_points": "",
                     "sentiment": ""
                 }
+    return {}
+
 
 def process_video(video: Dict[str, Any], persona: Dict[str, Any]) -> Dict[str, Any]:
     transcript = video.get('transcript', '')

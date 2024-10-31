@@ -47,6 +47,7 @@ def load_articles(filename):
         logging.error(f"Error loading articles from {filename}: {e}")
         return []
 
+
 def save_articles(articles, filename):
     """Save articles to a JSON file."""
     try:
@@ -55,6 +56,7 @@ def save_articles(articles, filename):
         logging.info(f"Saved {len(articles)} articles to {filename}")
     except Exception as e:
         logging.error(f"Error saving articles to {filename}: {e}")
+
 
 def is_environmental_article(article, threshold=1):
     """
@@ -73,6 +75,7 @@ def is_environmental_article(article, threshold=1):
     keyword_count = sum(1 for keyword in ENVIRONMENTAL_KEYWORDS if keyword in content)
     
     return keyword_count >= threshold
+
 
 def extract_environmental_keywords(article):
     """
@@ -94,6 +97,7 @@ def extract_environmental_keywords(article):
     
     return dict(keyword_counts)
 
+
 def filter_environmental_articles(input_file, output_file):
     """
     Filter environmental articles from the input file and save them to the output file.
@@ -113,6 +117,7 @@ def filter_environmental_articles(input_file, output_file):
             logging.info(f"Environmental article found: {article['metadata']['title']}")
 
     save_articles(environmental_articles, output_file)
+
 
 if __name__ == "__main__":
     input_file = "scraped_bbc_articles.json"

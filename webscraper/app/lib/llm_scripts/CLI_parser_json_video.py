@@ -3,6 +3,7 @@ import json
 import argparse
 from typing import List, Dict, Any
 
+
 def parse_json_files(folder_path: str) -> List[Dict[str, Any]]:
     all_videos = []
     
@@ -35,6 +36,7 @@ def parse_json_files(folder_path: str) -> List[Dict[str, Any]]:
     
     return all_videos
 
+
 def main():
     parser = argparse.ArgumentParser(description="Parse JSON files and create a single consolidated JSON file for all videos.")
     parser.add_argument("input_folder", help="Path to the folder containing input JSON files")
@@ -51,6 +53,7 @@ def main():
         print(f"Total videos processed: {len(all_videos)}")
     except Exception as e:
         print(f"An error occurred: {e}")
+
 
 if __name__ == "__main__":
     main()

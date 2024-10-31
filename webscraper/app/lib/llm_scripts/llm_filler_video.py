@@ -1,16 +1,17 @@
-import os
 import json
 import argparse
 import requests
 import time
 from typing import List, Dict, Any
+from app.lib.credentials import PERPLEXITY_API_KEY
 
 # Perplexity API endpoint
 API_URL = "https://api.perplexity.ai/chat/completions"
 
+
 def process_with_perplexity(transcript: str, max_retries=3, delay=5):
     headers = {
-        "Authorization": f"Bearer {API_KEY}",
+        "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
         "Content-Type": "application/json"
     }
     
@@ -45,6 +46,7 @@ def process_with_perplexity(transcript: str, max_retries=3, delay=5):
                 print(f"An error occurred: {str(e)}")
                 return {}
 
+
 def update_video_info(video: Dict[str, Any]) -> Dict[str, Any]:
     transcript = video.get('transcript', '')
     perplexity_result = process_with_perplexity(transcript)
@@ -61,6 +63,7 @@ def update_video_info(video: Dict[str, Any]) -> Dict[str, Any]:
     
     print(f"Updated video: {video.get('vid', 'Unknown ID')}")
     return video
+
 
 def process_json_file(input_file: str, output_file: str):
     try:
@@ -89,6 +92,7 @@ def process_json_file(input_file: str, output_file: str):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+
 def main():
     parser = argparse.ArgumentParser(description="Update JSON file with video analysis from Perplexity API.")
     parser.add_argument("input_file", help="Path to the input JSON file")
@@ -96,6 +100,7 @@ def main():
     args = parser.parse_args()
 
     process_json_file(args.input_file, args.output_file)
+
 
 if __name__ == "__main__":
     main()

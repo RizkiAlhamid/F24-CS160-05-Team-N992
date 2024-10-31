@@ -40,6 +40,7 @@ def process_with_perplexity(prompt, max_retries=3, delay=5):
                 print(f"An error occurred: {str(e)}")
                 return f"Error: {str(e)}"
 
+
 def process_file(input_file, output_file):
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         for line in infile:
@@ -49,9 +50,11 @@ def process_file(input_file, output_file):
                 outfile.write(f"Input: {prompt}\nOutput: {response}\n\n")
                 print(response)
 
+
 # Main execution
 input_file = 'input.txt'
 output_file = 'output.txt'
+
 
 if not os.path.exists(input_file):
     print(f"Error: Input file '{input_file}' not found.")

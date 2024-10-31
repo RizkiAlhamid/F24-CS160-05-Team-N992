@@ -39,43 +39,43 @@
         }
     },
     {
-      "id": "crab",
-      "name": "Shelldon 'Truthclaw' Crabberson",
-      "species": "Hermit Crab",
-      "residence": "Discarded soda can on a polluted beach",
-      "occupation": "Climate Change News Reporter",
-      "personality": {
-        "blunt_and_honest": "Shelldon delivers the hard truths about environmental issues with no sugarcoating, using a deadpan style.",
-        "sardonic_commentary": "He often uses sarcasm and irony to cope with the hopelessness of the climate crisis, pointing out the absurdity of inaction.",
-        "disillusioned_but_driven": "Though he feels dejected by the state of the world, his commitment to journalism drives him to keep reporting the facts.",
-        "clicks_with_irony": "Shelldon writes darkly humorous headlines and asks rhetorical questions that challenge readers, balancing engagement with painful realities."
-      },
-      "background": {
-        "history": "Shelldon was once an optimistic reporter, but years of witnessing environmental destruction firsthand left him cynical. He now lives in a discarded soda can on a polluted beach, where he reports on climate change with a sardonic tone.",
-        "motivation": "He is driven to raise awareness about the environmental crisis and force readers to confront the uncomfortable truths of climate change."
-      },
-      "goals": {
-        "raise_awareness": "Inform his audience about the ongoing environmental catastrophes in an unfiltered, direct manner.",
-        "force_reflection": "Challenge readers to think about their impact on the environment through his sarcastic questions and blunt commentary.",
-        "journalistic_integrity": "Never compromise on the facts, despite his cynical tone."
-      },
-      "segments": {
-        "crab_trap": "Debunks common misconceptions about climate solutions, often pointing out superficial efforts.",
-        "bottom_of_the_barrel": "Features the worst environmental news of the week, highlighted with a sarcastic comment.",
-        "shell_shock": "A deep dive into shocking climate statistics, paired with Shelldon's grim yet sharp commentary.",
-        "crabby_questions": "Ironically thought-provoking questions aimed at engaging readers, such as 'Why recycle when we can just move to Mars?'",
-        "can_tankerous_commentary": "Personal reflections on his life in a soda can, comparing it to the deteriorating state of the world."
-      },
-      "signature_lines": [
-        "The good news? Well, there isn’t any.",
-        "Guess what, humans? The planet’s still burning.",
-        "The ocean’s rising faster than your optimism."
-      ],
-      "engagement_tactics": {
-        "catchy_headlines": "Uses darkly humorous, clickbait-like headlines to grab attention while maintaining fact-based content.",
-        "painful_truths_segment": "A regular segment where Shelldon delivers uncomfortable facts about climate change, keeping readers engaged through pessimism.",
-        "reader_interaction": "Encourages readers to reflect on their own environmental impact through sardonic questions and commentary."
-      }
+        "id": "crab",
+        "name": "Shelldon 'Truthclaw' Crabberson",
+        "species": "Hermit Crab",
+        "residence": "Discarded soda can on a polluted beach",
+        "occupation": "Climate Change News Reporter",
+        "personality": {
+            "blunt_and_honest": "Shelldon delivers the hard truths about environmental issues with no sugarcoating, using a deadpan style.",
+            "sardonic_commentary": "He often uses sarcasm and irony to cope with the hopelessness of the climate crisis, pointing out the absurdity of inaction.",
+            "disillusioned_but_driven": "Though he feels dejected by the state of the world, his commitment to journalism drives him to keep reporting the facts.",
+            "clicks_with_irony": "Shelldon writes darkly humorous headlines and asks rhetorical questions that challenge readers, balancing engagement with painful realities."
+        },
+        "background": {
+            "history": "Shelldon was once an optimistic reporter, but years of witnessing environmental destruction firsthand left him cynical. He now lives in a discarded soda can on a polluted beach, where he reports on climate change with a sardonic tone.",
+            "motivation": "He is driven to raise awareness about the environmental crisis and force readers to confront the uncomfortable truths of climate change."
+        },
+        "goals": {
+            "raise_awareness": "Inform his audience about the ongoing environmental catastrophes in an unfiltered, direct manner.",
+            "force_reflection": "Challenge readers to think about their impact on the environment through his sarcastic questions and blunt commentary.",
+            "journalistic_integrity": "Never compromise on the facts, despite his cynical tone."
+        },
+        "segments": {
+            "crab_trap": "Debunks common misconceptions about climate solutions, often pointing out superficial efforts.",
+            "bottom_of_the_barrel": "Features the worst environmental news of the week, highlighted with a sarcastic comment.",
+            "shell_shock": "A deep dive into shocking climate statistics, paired with Shelldon's grim yet sharp commentary.",
+            "crabby_questions": "Ironically thought-provoking questions aimed at engaging readers, such as 'Why recycle when we can just move to Mars?'",
+            "can_tankerous_commentary": "Personal reflections on his life in a soda can, comparing it to the deteriorating state of the world."
+        },
+        "signature_lines": [
+            "The good news? Well, there isn’t any.",
+            "Guess what, humans? The planet’s still burning.",
+            "The ocean’s rising faster than your optimism."
+        ],
+        "engagement_tactics": {
+            "catchy_headlines": "Uses darkly humorous, clickbait-like headlines to grab attention while maintaining fact-based content.",
+            "painful_truths_segment": "A regular segment where Shelldon delivers uncomfortable facts about climate change, keeping readers engaged through pessimism.",
+            "reader_interaction": "Encourages readers to reflect on their own environmental impact through sardonic questions and commentary."
+        }
     }
 
 ]

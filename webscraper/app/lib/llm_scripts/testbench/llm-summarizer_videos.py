@@ -4,13 +4,17 @@ import anthropic
 import openai
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
+
 # Load API keys from environment variables
+
 
 # Initialize API clients
 anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 openai.api_key = OPENAI_API_KEY
+
 
 def process_transcript(transcript, api="claude"):
     if api == "claude":
@@ -19,6 +23,7 @@ def process_transcript(transcript, api="claude"):
         return process_with_openai(transcript)
     else:
         raise ValueError("Invalid API choice. Use 'claude' or 'openai'.")
+
 
 def process_with_claude(transcript):
     prompt = f"""
@@ -44,6 +49,7 @@ def process_with_claude(transcript):
     )
 
     return json.loads(response.completion)
+
 
 def process_with_openai(transcript):
     prompt = f"""
@@ -71,6 +77,7 @@ def process_with_openai(transcript):
     )
 
     return json.loads(response.choices[0].message.content)
+
 
 def process_channel_data(input_file, output_file, api="claude"):
     with open(input_file, 'r', encoding='utf-8') as f:
@@ -103,6 +110,7 @@ def process_channel_data(input_file, output_file, api="claude"):
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(summarized_videos, f, ensure_ascii=False, indent=2)
 
+
 def main():
     input_directory = 'channel_data'
     output_directory = 'processed_channel_data'
@@ -118,6 +126,7 @@ def main():
             print(f"Processing {filename}...")
             process_channel_data(input_file, output_file, api="claude")  # Change to "openai" if preferred
             print(f"Processed data saved to {output_file}")
+
 
 if __name__ == "__main__":
     main()
