@@ -8,3 +8,4 @@ services:
       - MONGODB_URI=${MONGO_URI}
     env_file:
       - .env
+    image: rizkialhamid/cs160-project-backend:latest
