@@ -2,6 +2,12 @@ import os
 import json
 import argparse
 from typing import List, Dict, Any
+from pathlib import Path
+
+
+DATA_PATH = Path("../../../data")
+if not DATA_PATH.exists():
+    DATA_PATH.mkdir(exist_ok=True)
 
 
 def parse_json_files(folder_path: str) -> List[Dict[str, Any]]:

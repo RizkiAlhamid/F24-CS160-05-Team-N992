@@ -1,15 +1,18 @@
 import os
 import json
 import argparse
-from dotenv import load_dotenv
 from youtube_transcript_api import YouTubeTranscriptApi
 from app.lib.llm_scripts.llm_processor import process_video
 from typing import Dict, Any, List, Tuple
 import aiohttp
 import asyncio
 from app.lib.credentials import YOUTUBE_API_KEY
+from pathlib import Path
 
-load_dotenv()
+
+DATA_PATH = Path("../../../../data")
+if not DATA_PATH.exists():
+    DATA_PATH.mkdir(exist_ok=True)
 
 BASE_URL = "https://www.googleapis.com/youtube/v3"
 

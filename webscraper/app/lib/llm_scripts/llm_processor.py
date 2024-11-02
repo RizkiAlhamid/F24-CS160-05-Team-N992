@@ -4,6 +4,12 @@ import time
 import re
 from typing import Dict, Any
 from app.lib.credentials import PERPLEXITY_API_KEY
+from pathlib import Path
+
+
+DATA_PATH = Path("../../../data")
+if not DATA_PATH.exists():
+    DATA_PATH.mkdir(exist_ok=True)
 
 # Perplexity API endpoint
 API_URL = "https://api.perplexity.ai/chat/completions"

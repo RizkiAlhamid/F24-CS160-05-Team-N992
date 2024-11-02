@@ -2,9 +2,16 @@ import requests
 import os
 import time
 from app.lib.credentials import PERPLEXITY_API_KEY
+from pathlib import Path
+
+
+DATA_PATH = Path("./data")
+if not DATA_PATH.exists():
+    DATA_PATH.mkdir(exist_ok=True)
 
 # Perplexity API endpoint
 API_URL = "https://api.perplexity.ai/chat/completions"
+
 
 def process_with_perplexity(prompt, max_retries=3, delay=5):
     headers = {

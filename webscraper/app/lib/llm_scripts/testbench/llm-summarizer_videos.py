@@ -3,6 +3,12 @@ import json
 import anthropic
 import openai
 from app.lib.credentials import OPENAI_API_KEY, ANTHROPIC_API_KEY
+from pathlib import Path
+
+
+DATA_PATH = Path("../../../../data")
+if not DATA_PATH.exists():
+    DATA_PATH.mkdir(exist_ok=True)
 
 # Initialize API clients
 anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
