@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webscraper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webscraper
+  template:
+    metadata:
+      labels:
+        app: webscraper
+    spec:
+      containers:
+      - name: webscraper
+        image: rizkialhamid/cs160-project-webscraper:latest
+        ports:
+        - containerPort: 8081
