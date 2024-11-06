@@ -5,19 +5,18 @@ import Articles from "../components/Articles";
 export default function HomePage() {
     return (
       <div className="flex flex-col min-h-screen bg-green-50">
-         <header className="bg-green-600 text-white">
+      <header className="bg-green-600 text-white">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold flex items-center">
+          <Link to="/home" className="text-2xl font-bold flex items-center">
             <Leaf className="mr-2" />
             EcoAlerts
-          </a>
+          </Link>
           <nav className="hidden md:flex space-x-4">
             <a className="hover:text-green-200">Settings</a>
 
           </nav>
-          <button className="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded">
-            Log Out
-          </button>
+          <Link to="/" className="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded">Log Out</Link>
+
         </div>
       </header>
   

@@ -1,5 +1,6 @@
 import { Leaf, Newspaper, Bell, TreePine } from "lucide-react";
 import aboutImg from '../assets/aboutImg.jpg';
+import { Link } from "react-router-dom";
 
 
 export default function LandingPage() {
@@ -7,18 +8,13 @@ export default function LandingPage() {
     <div className="min-h-screen bg-green-50">
       <header className="bg-green-600 text-white">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold flex items-center">
+          <Link to="/" className="text-2xl font-bold flex items-center">
             <Leaf className="mr-2" />
             EcoAlerts
-          </a>
-          <nav className="hidden md:flex space-x-4">
-            <a href="#features" className="hover:text-green-200">Features</a>
-            <a href="#about" className="hover:text-green-200">About</a>
-            <a href="#contact" className="hover:text-green-200">Contact</a>
-          </nav>
-          <button className="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded">
-            Sign Up
-          </button>
+          </Link>
+          <Link to="/login" className="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded inline-block">
+              Log In
+          </Link>
         </div>
       </header>
 
@@ -33,9 +29,9 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
               {/* Removed Input Field */}
-              <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
-                Get Started
-              </button>
+              <Link to="/register" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded inline-block">
+                    Get Started
+              </Link>
             </div>
           </div>
         </section>
@@ -97,9 +93,8 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Make a Difference?</h2>
             <p className="text-xl mb-8">Join thousands of environmentally conscious individuals in our mission to protect the planet.</p>
-            <button className="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded">
-              Join EcoAlerts Today
-            </button>
+            <Link to="/register" className="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded inline-block">Join EcoAlerts Today!</Link>
+
           </div>
         </section>
       </main>
