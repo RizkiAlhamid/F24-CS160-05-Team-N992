@@ -65,15 +65,9 @@ export default function Login() {
               />
             </div>
             
-            {/* <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md">
+            <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md">
               Log In
-            </button> */} 
-
-            <Link to="/home" className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md">
-              Log In
-            </Link>   
-            {/* Just for the demo */}
-            
+            </button>
           </form>
           <footer className="flex flex-col space-y-2 mt-4">
             <p className="text-sm text-green-700 text-center">
