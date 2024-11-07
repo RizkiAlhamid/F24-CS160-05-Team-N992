@@ -2,25 +2,30 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 import json
-import argparse
 import math
 import time
 import logging
 from ratelimit import limits, sleep_and_retry
-import os
 from collections import deque
+from pathlib import Path
+from app.lib.logging import logging
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+DATA_PATH = Path("./data")
+if not DATA_PATH.exists():
+    DATA_PATH.mkdir(exist_ok=True)
+
 
 def is_valid_url(url):
     """Check if a URL is valid."""
     parsed = urlparse(url)
     return bool(parsed.netloc) and bool(parsed.scheme)
 
+
 def is_bbc_news_article(url):
     """Check if the URL is a BBC News article with the specific structure."""
     return url.startswith("https://www.bbc.com/news/articles/")
+
 
 @sleep_and_retry
 @limits(calls=5, period=1)  # Rate limit: 5 requests per second
@@ -33,6 +38,7 @@ def fetch_url(url):
     except requests.RequestException as e:
         logging.error(f"Error fetching {url}: {e}")
         return None
+
 
 def collect_hyperlinks(url):
     """Collect all hyperlinks from the given URL that match BBC News article format."""
@@ -49,6 +55,7 @@ def collect_hyperlinks(url):
             links.append(link)
     
     return list(set(links))  # Remove duplicates
+
 
 def extract_page_info(soup, url):
     """Extract information from a BBC News article page."""
@@ -102,6 +109,7 @@ def extract_page_info(soup, url):
 
     return page_info
 
+
 def scrape_page(url):
     """Scrape a single BBC News article page."""
     content = fetch_url(url)
@@ -111,7 +119,8 @@ def scrape_page(url):
     soup = BeautifulSoup(content, 'html.parser')
     return extract_page_info(soup, url)
 
-def web_scraper(start_url, max_pages=None):
+
+def scrape_pages(start_url, max_pages=None):
     """Main web scraping function for BBC News articles."""
     scraped_pages = []
     visited_urls = set()
@@ -143,40 +152,36 @@ def web_scraper(start_url, max_pages=None):
 
     return scraped_pages
 
-def save_to_json(scraped_pages, filename='scraped_bbc_articles.json'):
+
+def save_to_json(scraped_pages, output_file_path: Path):
     """Save scraped information to a JSON file."""
     try:
-        dir_name = os.path.dirname(filename)
-        if dir_name:
-            os.makedirs(dir_name, exist_ok=True)
+        # Ensure the directory exists
+        output_file_path.parent.mkdir(parents=True, exist_ok=True)
         
-        with open(filename, 'w', encoding='utf-8') as jsonfile:
+        # Write JSON data to file
+        with output_file_path.open('w', encoding='utf-8') as jsonfile:
             json.dump(scraped_pages, jsonfile, ensure_ascii=False, indent=2)
         
-        logging.info(f"Scraped articles saved to {filename}")
+        logging.info(f"Scraped articles saved to {output_file_path}")
     except IOError as e:
-        logging.error(f"Error saving scraped articles to {filename}: {e}")
+        logging.error(f"Error saving scraped articles to {output_file_path}: {e}")
     except Exception as e:
-        logging.error(f"Unexpected error while saving scraped articles: {e}")
+        logging.error(f"Unexpected error while saving scraped articles: {repr(e)}")
         logging.exception("Exception details:")
 
-def main():
-    parser = argparse.ArgumentParser(description="BBC News Web Scraper")
-    parser.add_argument("start_url", help="The starting URL for the web scraper (https://www.bbc.com/news)")
-    parser.add_argument("--max_pages", type=int, help="Maximum number of pages to scrape (default: no limit)")
-    parser.add_argument("--output", default="scraped_bbc_articles.json", help="Output JSON file name (default: scraped_bbc_articles.json)")
 
-    args = parser.parse_args()
+def bbc_scraper(start_url, max_pages, output_file_path) -> Path:
+    if output_file_path is None:
+        output_file_path = DATA_PATH / "scraped_bbc_articles.json"
 
     start_time = time.time()
-    scraped_pages = web_scraper(args.start_url, args.max_pages)
-    end_time = time.time()
-
-    logging.info(f"\nTotal articles scraped: {len(scraped_pages)}")
-    logging.info(f"Time taken: {end_time - start_time:.2f} seconds")
+    scraped_pages = scrape_pages(start_url, max_pages)
+    
+    logging.info(f"Total articles scraped: {len(scraped_pages)}")
+    logging.info(f"Time taken: {time.time() - start_time:.2f} seconds")
 
     # Save scraped pages to JSON
-    save_to_json(scraped_pages, args.output)
+    save_to_json(scraped_pages, output_file_path)
+    return output_file_path
 
-if __name__ == "__main__":
-    main()

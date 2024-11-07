@@ -12,6 +12,4 @@ def get_env_variable(var_name: str, default: str = "") -> str:
 
 YOUTUBE_API_KEY = get_env_variable("YOUTUBE_API_KEY")
 PERPLEXITY_API_KEY = get_env_variable("PERPLEXITY_API_KEY")
-OPENAI_API_KEY = get_env_variable("OPENAI_API_KEY")
-ANTHROPIC_API_KEY = get_env_variable("ANTHROPIC_API_KEY")
 MONGO_URI = get_env_variable("MONGO_URI")

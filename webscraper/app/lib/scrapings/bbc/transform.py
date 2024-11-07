@@ -1,16 +1,13 @@
 import json
 import re
 from collections import Counter
-import logging
 from pathlib import Path
+from app.lib.logging import logging
 
 
-DATA_PATH = Path("../../../../data")
+DATA_PATH = Path("./data")
 if not DATA_PATH.exists():
     DATA_PATH.mkdir(exist_ok=True)
-
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # List of environmental keywords
 ENVIRONMENTAL_KEYWORDS = [
