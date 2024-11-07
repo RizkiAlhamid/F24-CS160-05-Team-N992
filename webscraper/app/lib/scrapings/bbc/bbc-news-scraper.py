@@ -3,10 +3,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 import json
 import argparse
-import re
-from datetime import datetime
 import math
-import concurrent.futures
 import time
 import logging
 from ratelimit import limits, sleep_and_retry
