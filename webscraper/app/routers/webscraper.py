@@ -21,6 +21,8 @@ def scrape_bbc_article(url: str):
 
 class ScrapeRequest(BaseModel):
     url: str
+    pages_count: int
+
 
 @router.post("/scrape_bbc")
 def scrape_bbc(request: ScrapeRequest):
@@ -29,7 +31,7 @@ def scrape_bbc(request: ScrapeRequest):
     """
     try:
         # Call the scraper function
-        scraped_articles_path = bbc_scraper(request.url, 5, None)
+        scraped_articles_path = bbc_scraper(request.url, request.pages_count, None)
         DATA_PATH = Path("./data")
         output_file = DATA_PATH / "environmental_articles.json"
         filter_environmental_articles(scraped_articles_path, output_file)
@@ -37,7 +39,4 @@ def scrape_bbc(request: ScrapeRequest):
         return {"message": "Scraping completed successfully.", "output_file": str(output_file)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {e}")
-     
-
-
 
