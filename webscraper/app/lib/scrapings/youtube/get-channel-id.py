@@ -4,7 +4,7 @@ from app.lib.credentials import YOUTUBE_API_KEY
 from pathlib import Path
 
 
-DATA_PATH = Path("../../../../data")
+DATA_PATH = Path("./data")
 if not DATA_PATH.exists():
     DATA_PATH.mkdir(exist_ok=True)
 

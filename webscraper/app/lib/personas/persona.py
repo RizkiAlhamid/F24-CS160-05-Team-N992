@@ -2,8 +2,14 @@ from app.database.db import database
 
 collection = database.personas
 
-def get_all_personas():
-    return collection.find()
+async def get_all_personas():
+    return await collection.find().to_list(length=None)
+
+async def get_first_persona():
+    personas = await get_all_personas()
+    if personas:
+        return personas[0]  # Return the first persona
+    return None
 
 def get_persona_by_id(str_id: str):
     return collection.find_one({"id": str_id})

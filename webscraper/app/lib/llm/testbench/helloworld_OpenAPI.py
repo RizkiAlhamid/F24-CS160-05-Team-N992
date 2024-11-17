@@ -3,6 +3,7 @@ import os
 import time
 from app.lib.credentials import PERPLEXITY_API_KEY
 from pathlib import Path
+from app.lib.logging import logging
 
 
 DATA_PATH = Path("./data")
@@ -49,7 +50,11 @@ def process_with_perplexity(prompt, max_retries=3, delay=5):
                 return f"Error: {str(e)}"
 
 
-def process_file(input_file, output_file):
+def process_file(input_file: str, output_file: str):
+    if not Path(input_file).exists():
+        logging.error(f"Input file '{input_file}' not found.")
+        return
+
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         for line in infile:
             prompt = line.strip()

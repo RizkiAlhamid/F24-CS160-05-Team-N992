@@ -5,7 +5,7 @@ from typing import List, Dict, Any
 from pathlib import Path
 
 
-DATA_PATH = Path("../../../data")
+DATA_PATH = Path("./data")
 if not DATA_PATH.exists():
     DATA_PATH.mkdir(exist_ok=True)
 

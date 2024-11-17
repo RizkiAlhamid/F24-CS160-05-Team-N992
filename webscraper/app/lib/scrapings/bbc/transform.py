@@ -10,6 +10,7 @@ if not DATA_PATH.exists():
     DATA_PATH.mkdir(exist_ok=True)
 
 # List of environmental keywords
+# TODO: save this list in db
 ENVIRONMENTAL_KEYWORDS = [
     "climate change", "global warming", "renewable energy", "sustainability", "carbon emissions",
     "greenhouse gas", "pollution", "conservation", "biodiversity", "recycling", "environmental",
