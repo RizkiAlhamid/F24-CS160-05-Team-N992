@@ -1,26 +1,37 @@
-# This is where you define the scraped article class
-from pydantic import BaseModel, HttpUrl, Field
-from typing import List, Optional
-
-class Content(BaseModel):
-    paragraphs: List[str]
-
-class Image(BaseModel):
-    url: HttpUrl
-    alt: Optional[str]
+from pydantic import BaseModel
+from typing import List, Dict, Optional
 
 class Metadata(BaseModel):
-    category: Optional[str]
-    tags: List[str]
+    title: str
+    author: Optional[str]
+    publication_date: Optional[str]
+    last_modified_date: Optional[str]
+    tags: Optional[List[str]]
+    categories: Optional[List[str]]
+
+class Content(BaseModel):
+    full_text: str
+    paragraphs: List[str]
     word_count: int
-    reading_time: str
+
+class Analytics(BaseModel):
+    reading_time_minutes: int
+
+class Sentiment(BaseModel):
+    overall: str
+    tone: str
+    emotional: str
+    adjective: List[str]
 
 class Article(BaseModel):
-    title: str
-    url: HttpUrl
-    author: Optional[str]
-    published_date: Optional[str]
-    content: Content
+    url: str
     metadata: Metadata
-    images: List[Image]
-    comments: List[str] = []
+    content: Content
+    analytics: Optional[Analytics]
+    environmental_keywords: Optional[Dict[str, int]]
+    logline: str
+    summary: str
+    tags: List[str]
+    main_topic: str
+    key_points: List[str]
+    sentiment: Sentiment

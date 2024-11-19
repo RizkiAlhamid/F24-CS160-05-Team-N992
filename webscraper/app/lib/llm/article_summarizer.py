@@ -1,9 +1,12 @@
 import json
 from pathlib import Path
 from app.lib.credentials import PERPLEXITY_API_KEY
+
 import requests
 import time
 from app.lib.logging import logging
+from app.lib.articles.article import save_article_to_db
+from app.models.article import Article
 
 DATA_PATH = Path("./data")
 if not DATA_PATH.exists():
@@ -13,7 +16,7 @@ if not DATA_PATH.exists():
 API_URL = "https://api.perplexity.ai/chat/completions"
 
 
-def summarize_articles(input_file, persona: dict):
+async def summarize_articles(input_file, persona: dict):
     if not Path(input_file).exists():
         logging.error(f"Input file '{input_file}' not found.")
         return
@@ -41,23 +44,48 @@ def summarize_articles(input_file, persona: dict):
             continue
 
         prompt = f"""
-            You are {persona}. Summarize the following article for your audience:
+            You are {persona}. With the following article:
             {content}
-            """
+            ,
+            Analyze and generate a logline, summary (that takes about 3 minutes to read), tags, main topic, key points, and sentiment. Format your response as a VALID JSON object with the following keys: logline, summary, tags, main_topic, key_points, sentiment.
+            This is the format:
 
+            logline: str
+            summary: str
+            tags: List[str]
+            main_topic: str
+            key_points: List[str]
+            sentiment: Sentiment
+            
+            class Sentiment(BaseModel):
+                overall: str
+                tone: str
+                emotional: str
+                adjective: List[str]
+            """
         try:
             result = process_with_perplexity(prompt)
+            if isinstance(result, str):
+                # Trim before and after the JSON { and }
+                result = result[result.find("{") : result.rfind("}") + 1]
+                result = json.loads(result)
+            if isinstance(result, dict):
+                article["logline"] = result.get("logline", "")
+                article["summary"] = result.get("summary", "")
+                article["tags"] = result.get("tags", []) 
+                article["main_topic"] = result.get("main_topic", "")
+                article["key_points"] = result.get("key_points", []) 
+                article["sentiment"] = result.get("sentiment", {})
         except Exception as e:
             logging.error(f"Error processing article '{title}': {e}")
             continue
-        # Add the summary back to the article
-        article["summary"] = result
 
         # Save summarized article
         output_path = DATA_PATH / f"{title}.json"
-        save_summarized_article(article, output_path)
+        await save_summarized_article(article, output_path)
 
     logging.info("All articles processed.")
+    
 
 
 def process_with_perplexity(prompt, max_retries=3, delay=5):
@@ -69,7 +97,7 @@ def process_with_perplexity(prompt, max_retries=3, delay=5):
     data = {
         "model": "llama-3.1-8b-instruct",
         "messages": [
-            {"role": "system", "content": "Format your response as a summary based of your persona."},
+            {"role": "system", "content": "Format your response in VALID JSON format that will be parsed in Python."},
             {"role": "user", "content": prompt}
         ]
     }
@@ -96,11 +124,15 @@ def process_with_perplexity(prompt, max_retries=3, delay=5):
                 return f"Error: {str(e)}"
 
 
-def save_summarized_article(article, output_path):
+async def save_summarized_article(article, output_path):
     """Save articles to a JSON file."""
     try:
+        # Save locally
         with open(output_path, 'w', encoding='utf-8') as file:
             json.dump(article, file, ensure_ascii=False, indent=2)
         logging.info(f"Saved summarized article to {output_path}")
+        # Save to database
+        article = Article(**article) 
+        await save_article_to_db(article)
     except Exception as e:
         logging.error(f"Error saving article to {output_path}: {e}")

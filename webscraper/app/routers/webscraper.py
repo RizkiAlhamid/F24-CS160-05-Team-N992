@@ -1,7 +1,5 @@
 # This is where the on-demand article scrapping endpoint is defined
 from fastapi import APIRouter, HTTPException
-from bson import ObjectId
-from app.database.db import database
 from app.models.article import Article
 from kubernetes import client, config
 from app.lib.scrapings.bbc.scraper import DATA_PATH, bbc_scraper
@@ -43,7 +41,7 @@ async def scrape_bbc(request: ScrapeRequest):
         if not persona:
             raise HTTPException(status_code=404, detail="No personas found in the database.")
 
-        summarize_articles(filtered_articles_path, persona)
+        await summarize_articles(filtered_articles_path, persona)
 
         return {"message": "Scraping & summarizing completed successfully."}
     except Exception as e:
