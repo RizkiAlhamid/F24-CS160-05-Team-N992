@@ -33,7 +33,7 @@ export default function Articles() {
           {/* <p className="text-gray-600">Total Views: {article.view_count}</p> */}
           {/* <p className="text-sm text-gray-500">{article.description}</p> */}
           <div className="mt-4">
-            {article.videos.map((video) => (
+            {article.videos?.map((video) => (
               <div key={video.vid} className="mb-6">
                 <h3 className="text-lg font-semibold">{video.title}</h3>
                 <p className="text-gray-500">{new Date(video.published_at).toLocaleDateString()}</p>
