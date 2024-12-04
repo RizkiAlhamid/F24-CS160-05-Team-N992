@@ -76,6 +76,9 @@ async def summarize_articles(input_file, persona: dict):
                 article["main_topic"] = result.get("main_topic", "")
                 article["key_points"] = result.get("key_points", []) 
                 article["sentiment"] = result.get("sentiment", {})
+                # Save current date inside article['metadate']['last_modified_date'] in 
+                # the format "MM/DD/YYYY"
+                article["metadata"]["last_modified_date"] = time.strftime("%m/%d/%Y")
         except Exception as e:
             logging.error(f"Error processing article '{title}': {e}")
             continue
