@@ -3,7 +3,7 @@ import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import VideoDetails from './pages/VideoDetails';
+import ArticleDetails from './pages/ArticleDetails';
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/article/:id" element={<VideoDetails />} />
+        <Route path="/article/:id" element={<ArticleDetails />} />
       </Routes>
     </BrowserRouter>
   );

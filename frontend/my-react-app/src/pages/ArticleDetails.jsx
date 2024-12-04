@@ -1,17 +1,16 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Leaf, BookType, Lightbulb, Calendar, Tags, SquareUser, Sun, Moon } from "lucide-react";
+import { Leaf, BookType, Lightbulb, Calendar, Tags, SquareUser, Sun, Moon } from 'lucide-react';
 import { Link } from "react-router-dom";
 
-export default function VideoDetails() {
+export default function ArticleDetails() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  // Ensure video and article data are available
-  if (!state || !state.video || !state.article) {
-    return <p>Data not found. Please go back and try again.</p>;
+  if (!state || !state.article) {
+    return <p>Article not found. Please go back and try again.</p>;
   }
 
-  const { video, article } = state;
+  const { article } = state;
 
   return (
     <div className="flex flex-col min-h-screen bg-green-50">
@@ -36,31 +35,30 @@ export default function VideoDetails() {
           </button>
           <div className="flex items-center justify-center mb-4">
             <Sun className="text-yellow-500 mr-3" />
-            <h1 className="text-2xl font-bold text-center">{video.title}</h1>
+            <h1 className="text-2xl font-bold text-center">{article.metadata.title}</h1>
             <Moon className="text-blue-500 ml-3" />
-        </div>
-
+          </div>
 
           <div className="flex items-center justify-center text-gray-500 mb-2">
             <Calendar className="mr-2" />
-            <p>Date: {new Date(video.published_at).toLocaleDateString()}</p>
+            <p>Date: {new Date(article.metadata.last_modified_date || article.metadata.published_at).toLocaleDateString()}</p>
           </div>
-          <p className="text-gray-600 mb-4">{video.logline}</p>
+          <p className="text-gray-600 mb-4">{article.logline}</p>
 
-          {/* Sypnosis Section */}
+          {/* Summary Section */}
           <div className="flex items-center justify-center mt-6 mb-2">
             <BookType className="text-green-800 mr-2" />
-            <p className="text-lg font-bold text-green-800">Sypnosis</p>
+            <p className="text-lg font-bold text-green-800">Summary</p>
           </div>
-          <p className="text-green-700 mb-4">{video.summary}</p>
+          <p className="text-green-700 mb-4">{article.summary}</p>
 
-          {/* Key Ideas Section */}
+          {/* Key Points Section */}
           <div className="flex items-center justify-center mt-6 mb-2">
             <Lightbulb className="text-black mr-2" />
-            <p className="text-lg font-bold text-black">Key Ideas</p>
+            <p className="text-lg font-bold text-black">Key Points</p>
           </div>
           <ul className="list-disc list-inside">
-            {video.key_points.map((point, index) => (
+            {article.key_points.map((point, index) => (
               <li key={index}>{point}</li>
             ))}
           </ul>
@@ -68,32 +66,31 @@ export default function VideoDetails() {
           {/* Tags Section */}
           <div className="mt-6">
             <div className="flex items-center justify-center mb-2">
-                <Tags className="text-gray-700 mr-2 mb-3" />
-                <h3 className="text-lg font-bold mb-3">Tags</h3>
+              <Tags className="text-gray-700 mr-2 mb-3" />
+              <h3 className="text-lg font-bold mb-3">Tags</h3>
             </div>
             <div className="flex flex-wrap gap-2 justify-center">
-                {video.tags.map((tag, index) => (
+              {article.tags.map((tag, index) => (
                 <span
-                    key={index}
-                    className="px-3 py-1 bg-gray-200 rounded-full text-sm font-semibold text-green-600"
+                  key={index}
+                  className="px-3 py-1 bg-gray-200 rounded-full text-sm font-semibold text-green-600"
                 >
-                    {tag}
+                  {tag}
                 </span>
-                ))}
+              ))}
             </div>
-            </div>
+          </div>
 
-
-          {/* Sources Section */}
+          {/* Main Topic Section */}
           <div className="mt-6">
             <div className="flex items-center justify-center mb-2">
-                <SquareUser className="text-gray-700 mr-2 mb-2" />
-                <h3 className="text-lg font-bold mb-2">Sources</h3>
+              <SquareUser className="text-gray-700 mr-2 mb-2" />
+              <h3 className="text-lg font-bold mb-2">Main Topic</h3>
             </div>
-            <p className="text-gray-700">
-                <strong>Author:</strong> {article.channel}
+            <p className="text-gray-700 text-center">
+              {article.main_topic}
             </p>
-        </div>
+          </div>
 
         </div>
       </main>
@@ -107,15 +104,4 @@ export default function VideoDetails() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
 
