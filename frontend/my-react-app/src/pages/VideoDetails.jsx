@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Leaf } from "lucide-react";
+import { Leaf, BookType, Lightbulb, Calendar, Tags, SquareUser, Sun, Moon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function VideoDetails() {
@@ -34,44 +34,67 @@ export default function VideoDetails() {
           <button onClick={() => navigate(-1)} className="mb-4 text-blue-500">
             &larr; Back
           </button>
-          <h1 className="text-2xl font-bold mb-4 text-center">{video.title}</h1>
-            <p className="text-gray-500 mb-2 text-center">Date: {new Date(video.published_at).toLocaleDateString()}</p>
-            <p className="text-gray-600 mb-4">{video.logline}</p>
+          <div className="flex items-center justify-center mb-4">
+            <Sun className="text-yellow-500 mr-3" />
+            <h1 className="text-2xl font-bold text-center">{video.title}</h1>
+            <Moon className="text-blue-500 ml-3" />
+        </div>
 
-            {/* Sypnosis Section */}
-            <p className="text-lg font-semibold text-green-800 mt-6 mb-2 text-center">Sypnosis</p>
-            <p className="text-green-700 mb-4">{video.summary}</p>
 
-            {/* Key Ideas Section */}
-            <p className="text-lg font-semibold text-black mt-6 mb-2 text-center">Key Ideas</p>
-            <ul className="list-disc list-inside">
+          <div className="flex items-center justify-center text-gray-500 mb-2">
+            <Calendar className="mr-2" />
+            <p>Date: {new Date(video.published_at).toLocaleDateString()}</p>
+          </div>
+          <p className="text-gray-600 mb-4">{video.logline}</p>
+
+          {/* Sypnosis Section */}
+          <div className="flex items-center justify-center mt-6 mb-2">
+            <BookType className="text-green-800 mr-2" />
+            <p className="text-lg font-bold text-green-800">Sypnosis</p>
+          </div>
+          <p className="text-green-700 mb-4">{video.summary}</p>
+
+          {/* Key Ideas Section */}
+          <div className="flex items-center justify-center mt-6 mb-2">
+            <Lightbulb className="text-black mr-2" />
+            <p className="text-lg font-bold text-black">Key Ideas</p>
+          </div>
+          <ul className="list-disc list-inside">
             {video.key_points.map((point, index) => (
-                <li key={index}>{point}</li>
+              <li key={index}>{point}</li>
             ))}
-            </ul>
+          </ul>
           
           {/* Tags Section */}
           <div className="mt-6">
-            <h3 className="text-lg font-bold mb-2">Tags</h3>
-            <div className="flex flex-wrap gap-2">
-              {video.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 bg-gray-200 rounded-full text-sm font-semibold text-green-600"
-                >
-                  {tag}
-                </span>
-              ))}
+            <div className="flex items-center justify-center mb-2">
+                <Tags className="text-gray-700 mr-2 mb-3" />
+                <h3 className="text-lg font-bold mb-3">Tags</h3>
             </div>
-          </div>
+            <div className="flex flex-wrap gap-2 justify-center">
+                {video.tags.map((tag, index) => (
+                <span
+                    key={index}
+                    className="px-3 py-1 bg-gray-200 rounded-full text-sm font-semibold text-green-600"
+                >
+                    {tag}
+                </span>
+                ))}
+            </div>
+            </div>
+
 
           {/* Sources Section */}
           <div className="mt-6">
-            <h3 className="text-lg font-bold mb-2">Sources</h3>
+            <div className="flex items-center justify-center mb-2">
+                <SquareUser className="text-gray-700 mr-2 mb-2" />
+                <h3 className="text-lg font-bold mb-2">Sources</h3>
+            </div>
             <p className="text-gray-700">
-              <strong>Author:</strong> {article.channel}
+                <strong>Author:</strong> {article.channel}
             </p>
-          </div>
+        </div>
+
         </div>
       </main>
 
@@ -84,6 +107,7 @@ export default function VideoDetails() {
     </div>
   );
 }
+
 
 
 
