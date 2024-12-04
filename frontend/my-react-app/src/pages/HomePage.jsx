@@ -11,18 +11,18 @@ export default function HomePage() {
             <Leaf className="mr-2" />
             EcoAlerts
           </Link>
-          <nav className="hidden md:flex space-x-4">
+          {/* <nav className="hidden md:flex space-x-4">
             <a className="hover:text-green-200">Settings</a>
 
-          </nav>
+          </nav> */}
           <Link to="/" className="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded">Log Out</Link>
 
         </div>
       </header>
   
         <main className="container mx-auto px-4 py-8 flex-grow">
-          <h1 className="text-3xl font-bold text-green-800 mb-6">Today's Environmental Insights</h1>
-          <p className="text-green-700 mb-8">
+          <h1 className="text-3xl font-bold text-green-800 mb-6 text-center">Today's Environmental Insights</h1>
+          <p className="text-green-700 mb-8 text-center">
             Here are today's summarized articles on environmental topics. Click on an article to see more details.
           </p>
           <Articles />

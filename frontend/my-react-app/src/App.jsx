@@ -1,19 +1,22 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import LandingPage from "./pages/LandingPage"
-import HomePage from "./pages/HomePage"
-import Register from "./pages/Register"
-import Login from "./pages/Login"
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import HomePage from './pages/HomePage';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import VideoDetails from './pages/VideoDetails';
 
 export default function App() {
   return (
     <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingPage/>} />
-            <Route path="/home" element={<HomePage/>} />
-            <Route path="/register" element={<Register/>} />
-            <Route path="/login" element={<Login/>} />
-          </Routes>
-        </BrowserRouter>
-  )
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/article/:id" element={<VideoDetails />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
+
+
