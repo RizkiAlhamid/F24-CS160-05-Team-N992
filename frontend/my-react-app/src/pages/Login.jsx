@@ -35,7 +35,7 @@ export default function Login() {
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold flex items-center">
             <Leaf className="mr-2" />
-            EcoAlerts
+            Particle
           </Link>
         </div>
       </header>
@@ -45,7 +45,7 @@ export default function Login() {
         <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
           <header className="text-center mb-4">
             <h2 className="text-3xl text-green-800 font-bold">Welcome Back!</h2>
-            <p className="text-green-600 mt-3">Log in to your EcoAlerts account</p>
+            <p className="text-green-600 mt-3">Log in to your Particle account</p>
           </header>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
@@ -104,7 +104,7 @@ export default function Login() {
       {/* Footer */}
       <footer className="bg-green-800 text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 EcoAlerts. All rights reserved.</p>
+          <p>&copy; 2024 Particle. All rights reserved.</p>
         </div>
       </footer>
     </div>

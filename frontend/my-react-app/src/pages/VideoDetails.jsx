@@ -20,7 +20,7 @@ export default function VideoDetails() {
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <Link to="/home" className="text-2xl font-bold flex items-center">
             <Leaf className="mr-2" />
-            EcoAlerts
+            Particle
           </Link>
           <Link to="/" className="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded">
             Log Out
@@ -101,7 +101,7 @@ export default function VideoDetails() {
       {/* Footer */}
       <footer className="bg-green-800 text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 EcoAlerts. All rights reserved.</p>
+          <p>&copy; 2024 Particle. All rights reserved.</p>
         </div>
       </footer>
     </div>

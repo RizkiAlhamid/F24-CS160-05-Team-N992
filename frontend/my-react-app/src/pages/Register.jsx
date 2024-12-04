@@ -30,7 +30,7 @@ export default function RegisterPage() {
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold flex items-center">
             <Leaf className="mr-2" />
-            EcoAlerts
+            Particle
           </Link>
          
         </div>
@@ -40,7 +40,7 @@ export default function RegisterPage() {
       <main className="flex-grow flex items-center justify-center px-4 py-8">
         <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
           <h2 className="text-3xl text-center text-green-800 font-bold">Create an Account</h2>
-          <p className="mt-3 text-center text-green-600 mb-5">Join EcoAlerts and start making a difference today!</p>
+          <p className="mt-3 text-center text-green-600 mb-5">Join Particle and start making a difference today!</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
@@ -90,7 +90,7 @@ export default function RegisterPage() {
 
         <footer className="bg-green-800 text-white py-8">
           <div className="container mx-auto px-4 text-center">
-            <p>&copy; 2024 EcoAlerts. All rights reserved.</p>
+            <p>&copy; 2024 Particle. All rights reserved.</p>
           </div>
         </footer>
     </div>
