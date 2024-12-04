@@ -69,7 +69,7 @@ export default function VideoDetails() {
           <div className="mt-6">
             <h3 className="text-lg font-bold mb-2">Sources</h3>
             <p className="text-gray-700">
-              <strong>Channel:</strong> {article.channel}
+              <strong>Author:</strong> {article.channel}
             </p>
           </div>
         </div>
