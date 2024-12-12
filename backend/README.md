@@ -10,12 +10,12 @@ This is a FastAPI project structure using Poetry for dependency management. Foll
 - [Adding Dependencies](#adding-dependencies)
 - [Removing Dependencies](#removing-dependencies)
 - [Running the Application](#running-the-application)
-- [Running Tests](#running-tests)
 
 ## Prerequisites
 
 - Python 3.12 or higher
 - Poetry installed on your system
+- MongoDB URI in .env file (MONGO_URI)
 
 You can install Poetry by following the instructions at [Poetry's official installation guide](https://python-poetry.org/docs/#installation).
 
@@ -68,12 +68,3 @@ To run the FastAPI application, use the run_dev.sh script:
 ```
 
 The application will be accessible at `http://localhost:8080`.
-
-## Running Tests
-
-To run the tests for the FastAPI application, use the following command:
-
-```bash
-pytest
-```
-
