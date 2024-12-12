@@ -26,4 +26,3 @@
 2. Set up each component (frontend, backend, webscraper) separately
 3. Ensure all dependencies are installed
 4. Run local development servers
-5. Coordinate API contracts between services
