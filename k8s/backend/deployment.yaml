@@ -22,4 +22,4 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mongo-uri
-              key: uri
+              key: MONGO_URI 
