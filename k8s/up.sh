@@ -8,7 +8,7 @@ apply_k8s_resources() {
 }
 
 # Deploy backend resources
-apply_k8s_resources "backend/mongo-uri-secret.yaml"
+./backend/create-secret.sh
 apply_k8s_resources "backend/service.yaml"
 apply_k8s_resources "backend/deployment.yaml"
 
