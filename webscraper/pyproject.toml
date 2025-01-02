@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "webscraper"
+version = "0.1.0"
+description = ""
+authors = ["RizkiAlhamid <riskimifta@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = "^0.115.6"
+uvicorn = "^0.32.1"
+kubernetes = "^31.0.0"
+ratelimit = "^2.2.1"
+bson = "^0.5.10"
+motor = "^3.6.0"
+python-dotenv = "^1.0.1"
+bs4 = "^0.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
